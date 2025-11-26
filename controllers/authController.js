@@ -23,7 +23,7 @@ module.exports.registerUser = async (req, res) => {
             password: hash,
           });
           let token = generateToken(user);
-          res.cookie("userToken", token);
+          res.cookie("token", token);
           res.send("user registered successfully");
         }
       });
@@ -46,7 +46,7 @@ module.exports.loginUser = async (req, res) => {
     }
 
     let token = generateToken(user);
-    res.cookie("userToken", token);
+    res.cookie("token", token);
     res.send("User logged in successfully");
   } catch (err) {
     return res.status(500).send("Internal Server Error");
